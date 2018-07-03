@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Type de Pizza{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+    <style>
+        .text-green{
+            color:white;
+            background-color:green;
+            width:150px;
+            height:40px;
+        }
+        div[class="container"]{
+            width:80%;
+        }
+        .admin{
+            background-color:#dc5a60;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="admin">
+  <header class="admin__header">
+    <a href="/admin" class="logo">
+      <h1>Admin</h1>
+    </a>
+    <div class="toolbar">
+      <a href="/logout" class="logout btn btn-warning">
+        Log Out
+      </a>
+    </div>
+  </header>
+  {% if app.flashes('notice') is defined %}
+    {% for message in app.flashes('notice') %}
+        <div style="margin:auto;" class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+  {% endif %}
+  <nav class="admin__nav">
+    <ul class="menu">
+      <li class="menu__item">
+        <a class="menu__link" href="{{ path('admin') }}">Dashboard</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link active" href="{{ path('addpizza') }}">Ajouter Pizza</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="{{ path('commande_list') }}">Gérer les Commandes</a>
+      </li>
+      </li>
+    </ul>
+  </nav>
+  <main class="admin__main">
+  <h2 class="text-center">Ajouter Pizza</h2><br><br>
+    <div class="container">
+      <div class="text-center">
+          {{ form_start(form) }}
+          {{ form_widget(form) }}
+          {{ form_end(form) }}
+      </div>
+    </div>
+  </main>
+  <footer class="admin__footer">
+    <ul class="ticker">
+      <li class="ticker__item">Welcome {{ app.user.username }}</li>
+    </ul>
+    <span>
+      &copy; 2018 Pizza Inc.
+    </span>
+  </footer>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Lister une commande{% endblock %}
+
+{% block stylesheets %}
+<style>
+    div[id="form"] select{
+        width:60%;
+        margin: 0 auto 20px;
+    }
+    div[id="form"] button{
+        width:20%;
+        height:50px;
+    }
+    div[id="form"] input{
+        width:60%;
+        margin:auto;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container text-center ">
+    {% if form is defined %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% endif %}
+</div>
+
+{% endblock %}

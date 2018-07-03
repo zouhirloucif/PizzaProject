@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Admin | Pizza{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+    
+{% endblock %}
+
+{% block body %}
+    <div class="admin">
+  <header class="admin__header">
+    <a href="/admin" class="logo">
+      <h1>Admin</h1>
+    </a>
+    <div class="toolbar">
+      <a href="/logout" class="logout btn btn-success">
+        Log Out
+      </a>
+    </div>
+  </header>
+  <nav class="admin__nav">
+    <ul class="menu">
+      <li class="menu__item">
+        <a class="menu__link active" href="{{ path('admin') }}">Dashboard</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="{{ path('addpizza') }}">Pizza</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="{{ path('commande_list') }}">Commande</a>
+      </li>
+      </li>
+    </ul>
+  </nav>
+  <main class="admin__main text-center">
+    <h1> Welcome Back {{ app.user.username }} </h1>
+  </main>
+  <footer class="admin__footer">
+    <ul class="ticker">
+      <li class="ticker__item">Welcome {{ app.user.username }}</li>
+    </ul>
+    <span>
+      &copy; 2018 Pizza Inc.
+    </span>
+  </footer>
+</div>
+{% endblock %}
